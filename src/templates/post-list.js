@@ -3,7 +3,22 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import PostPreview from "../components/post-preview"
 
+import { makeStyles } from "@material-ui/core/styles"
+import Button from "@material-ui/core/Button"
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft"
+import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight"
+
+const useStyles = makeStyles(theme => ({
+  buttonContainer: {
+    display: "flex",
+    flexFlow: "row nowrap",
+    justifyContent: "space-between",
+    maxWidth: "70ch",
+  },
+}))
+
 const PostList = props => {
+  const classes = useStyles()
   const { data } = props
   const { currentPage, numPages } = props.pageContext
   const isFirst = currentPage === 1
@@ -16,23 +31,14 @@ const PostList = props => {
       {posts.map(post => (
         <PostPreview key={post.node.fields.slug} post={post.node} />
       ))}
-      <ul>
-        {!isFirst && (
-          <Link to={prevPage} rel="prev">
-            &larr; Newer
-          </Link>
-        )}
-        {Array.from({ length: numPages }, (_, i) => (
-          <li key={`pagination-number${i + 1}`}>
-            <Link to={`/${i === 0 ? "" : i + 1}`}>{i + 1}</Link>
-          </li>
-        ))}
-        {!isLast && (
-          <Link to={nextPage} rel="next">
-            Older &rarr;
-          </Link>
-        )}
-      </ul>
+      <div className={classes.buttonContainer}>
+        <Button disabled={isFirst} component={Link} to={prevPage} rel="prev">
+          <KeyboardArrowLeft /> Newer
+        </Button>
+        <Button disabled={isLast} component={Link} to={nextPage} rel="next">
+          Older <KeyboardArrowRight />
+        </Button>
+      </div>
     </Layout>
   )
 }
