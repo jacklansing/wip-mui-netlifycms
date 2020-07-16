@@ -1,5 +1,5 @@
 backend:
-  name: unc-sam
+  name: git-gateway
   branch: master #Branch to update
 
 media_folder: static/assets
