@@ -26,13 +26,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     query {
       allMdx {
         nodes {
-          id
           fields {
             slug
-          }
-          frontmatter {
-            title
-            date
           }
         }
       }

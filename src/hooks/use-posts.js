@@ -5,9 +5,13 @@ const usePosts = () => {
     query {
       allMdx {
         nodes {
+          fields {
+            slug
+          }
           frontmatter {
             title
             author
+            date(formatString: "DD MMM YYYY")
           }
           excerpt
         }
@@ -18,7 +22,8 @@ const usePosts = () => {
   return data.allMdx.nodes.map(post => ({
     title: post.frontmatter.title,
     author: post.frontmatter.author,
-    slug: post.frontmatter.slug,
+    date: post.frontmatter.date,
+    slug: post.fields.slug,
     excerpt: post.excerpt,
   }))
 }
