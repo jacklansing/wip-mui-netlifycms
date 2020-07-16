@@ -33,7 +33,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           frontmatter {
             title
             date
-            file
           }
         }
       }
