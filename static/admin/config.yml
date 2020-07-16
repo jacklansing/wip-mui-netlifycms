@@ -6,12 +6,17 @@ media_folder: static/assets
 public_folder: /assets
 
 collections:
-  - name: post
-    label: Post
-    folder: content/posts
+  - name: "post"
+    label: "Post"
+    folder: "content/posts"
     create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { name: title, label: Title }
-      - { name: date, label: Date, widget: datetime }
-      - { name: file, lbale: File, widget: file }
-      - { name: body, label: Body, widget: markdown }
+      - { name: "title", label: "Title" }
+      - label: "Author"
+        name: "author"
+        widget: "string"
+        default: "USFSC"
+      - { name: "date", label: "Date", widget: "datetime" }
+      - { name: "file", label: "File", widget: "file" }
+      - { name: "body", label: "Body", widget: "markdown" }
