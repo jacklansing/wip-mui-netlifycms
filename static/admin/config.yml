@@ -18,5 +18,5 @@ collections:
         widget: "string"
         default: "USFSC"
       - { name: "date", label: "Date", widget: "datetime" }
-      - { name: "file", label: "File", widget: "file" }
+      - { name: "file", label: "File", widget: "file", required: false }
       - { name: "body", label: "Body", widget: "markdown" }
