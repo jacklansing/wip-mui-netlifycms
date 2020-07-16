@@ -24,7 +24,7 @@ const PostPreview = ({ post }) => {
     <Card className={classes.root}>
       <CardContent>
         <Typography variant="h5" component="h2">
-          {post.title}
+          {post.frontmatter.title}
         </Typography>
         <Typography
           gutterBottom
@@ -32,7 +32,7 @@ const PostPreview = ({ post }) => {
           color="textSecondary"
           component="h3"
         >
-          {post.date}
+          {post.frontmatter.date}
         </Typography>
         <Typography component="p" variant="body1">
           {post.excerpt}
@@ -40,7 +40,7 @@ const PostPreview = ({ post }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button component={Link} to={post.slug} color="primary">
+        <Button component={Link} to={post.fields.slug} color="primary">
           Read Post
         </Button>
       </CardActions>

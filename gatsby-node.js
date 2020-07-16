@@ -20,7 +20,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
-// Create pages for our posts
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const results = await graphql(`
     query {
@@ -39,7 +38,22 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   }
 
   const posts = results.data.allMdx.nodes
+  const postsPerPage = 3
+  const numPages = Math.ceil(posts.length / postsPerPage)
+  Array.from({ length: numPages }).forEach((_, i) => {
+    actions.createPage({
+      path: i === 0 ? `/` : `/${i + 1}`,
+      component: require.resolve("./src/templates/post-list.js"),
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1,
+      },
+    })
+  })
 
+  // Create pages for our posts
   posts.forEach(post => {
     actions.createPage({
       path: post.fields.slug,
