@@ -11,7 +11,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     query {
       allMdx {
         nodes {
-          fontmatter {
+          frontmatter {
             slug
           }
         }
@@ -20,7 +20,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   `)
 
   if (results.errors) {
-    reporter.panic("failed to create posts", result.errors)
+    reporter.panic("failed to create posts", results.errors)
   }
 
   const posts = results.data.allMdx.nodes
