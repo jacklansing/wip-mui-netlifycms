@@ -5,3 +5,5 @@
  */
 
 // You can delete this file if you're not using it
+import muiRootWrapper from "./mui-root-wrapper"
+export const wrapRootElement = muiRootWrapper
