@@ -4,8 +4,7 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-/* NetlifyCMS doesn't allow us to easily have a slug available on the frontmatter.
-For that reason, we add slug as a field on the node here. */
+/* Adding a slug to the node. Note we are checking for Mdx type and not MarkdownRemark. */
 const { createFilePath } = require("gatsby-source-filesystem")
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -37,6 +36,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     reporter.panic("failed to create posts", results.errors)
   }
 
+  // Paginated posts. The number of posts on each page is tied to the
+  // postsPerPage variable. URL may be changed by modifying the path.
+
   const posts = results.data.allMdx.nodes
   const postsPerPage = 3
   const numPages = Math.ceil(posts.length / postsPerPage)
@@ -53,7 +55,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     })
   })
 
-  // Create pages for our posts
+  // Create pages for our posts' full content.
   posts.forEach(post => {
     actions.createPage({
       path: post.fields.slug,
