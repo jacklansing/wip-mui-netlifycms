@@ -77,18 +77,30 @@ function NavBar({ siteTitle }) {
     setDrawerOpen(false)
   }
 
+  const isPartiallyActive = ({ isPartiallyCurrent, location }) => {
+    return isPartiallyCurrent && location.pathname.length <= 3
+      ? { className: classes.activeLink }
+      : {}
+  }
+
+  const isActive = ({ isCurrent }) => {
+    return isCurrent ? { className: classes.activeLink } : {}
+  }
+
+  const ExactNavLink = props => {
+    return <Link getProps={isActive} {...props} />
+  }
+
   const classicNav = () => (
     <nav>
       <Typography component="ul" className={classes.classicNav}>
         <li>
-          <Link activeClassName={classes.activeLink} to="/">
+          <Link to="/" getProps={isPartiallyActive}>
             Home
           </Link>
         </li>
         <li>
-          <Link activeClassName={classes.activeLink} to="/about">
-            About
-          </Link>
+          <ExactNavLink to="/about">About</ExactNavLink>
         </li>
       </Typography>
     </nav>
