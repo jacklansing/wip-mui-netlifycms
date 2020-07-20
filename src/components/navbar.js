@@ -78,7 +78,8 @@ function NavBar({ siteTitle }) {
   }
 
   const isPartiallyActive = ({ isPartiallyCurrent, location }) => {
-    return isPartiallyCurrent && location.pathname.length <= 3
+    const { pathname } = location
+    return isPartiallyCurrent && /\/\d*^[a-z]/.test(pathname)
       ? { className: classes.activeLink }
       : {}
   }
