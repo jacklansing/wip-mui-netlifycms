@@ -26,10 +26,15 @@ const PostList = props => {
   const prevPage = currentPage - 1 === 1 ? "" : currentPage - 1
   const nextPage = currentPage + 1
   const posts = data.allMdx.edges
+  const uri = props.uri
   return (
     <Layout>
       {posts.map(post => (
-        <PostPreview key={post.node.fields.slug} post={post.node} />
+        <PostPreview
+          key={post.node.fields.slug}
+          post={post.node}
+          previousUri={uri}
+        />
       ))}
       <div className={classes.buttonContainer}>
         <Button

@@ -1,8 +1,11 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import { css } from "@emotion/core"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Layout from "../components/layout"
+
+import { makeStyles } from "@material-ui/core/styles"
+import { Paper, Typography, Button } from "@material-ui/core"
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft"
 
 export const query = graphql`
   query($slug: String!) {
@@ -10,25 +13,42 @@ export const query = graphql`
       frontmatter {
         title
         author
+        date(formatString: "DD MMM YYYY")
       }
       body
     }
   }
 `
 
-const PostTemplate = ({ data: { mdx: post } }) => (
-  <Layout>
-    <h1>{post.frontmatter.title}</h1>
-    <p
-      css={css`
-        font-size: 0.75rem;
-      `}
-    >
-      Posted by {post.frontmatter.author}
-    </p>
-    <MDXRenderer>{post.body}</MDXRenderer>
-    <Link to="/">&larr; back to all posts</Link>
-  </Layout>
-)
+const useStyles = makeStyles(theme => ({
+  root: {
+    padding: theme.spacing(2),
+  },
+}))
+
+const PostTemplate = ({ data: { mdx: post }, ...props }) => {
+  const classes = useStyles()
+  let previousUri = "/"
+  if (props.location.state) {
+    previousUri = props.location.state.previousUri
+  }
+
+  return (
+    <Layout>
+      <Paper className={classes.root} elevation={24}>
+        <Typography variant="h4" component="h1">
+          {post.frontmatter.title}
+        </Typography>
+        <Typography variant="subtitle1" component="p">
+          Posted by {post.frontmatter.author} - {post.frontmatter.date}
+        </Typography>
+        <MDXRenderer>{post.body}</MDXRenderer>
+        <Button component={Link} to={`..${previousUri}`}>
+          <KeyboardArrowLeft /> BACK
+        </Button>
+      </Paper>
+    </Layout>
+  )
+}
 
 export default PostTemplate

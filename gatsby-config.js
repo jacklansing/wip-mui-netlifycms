@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Uncle Sam FSC`,
-    description: `Uncle Sam Figure Skating Club located in Troy, New York`,
+    title: `Gatsby Starter Mui-Netlify`,
+    description: `Starter based off default starter combined with Material UI and Netlify CMS for posts`,
     author: `@jacklansing`,
   },
   plugins: [

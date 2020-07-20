@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const PostPreview = ({ post }) => {
+const PostPreview = ({ post, ...props }) => {
   const classes = useStyles()
 
   return (
@@ -40,7 +40,12 @@ const PostPreview = ({ post }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button component={Link} to={post.fields.slug} color="primary">
+        <Button
+          component={Link}
+          to={post.fields.slug}
+          state={{ previousUri: props.previousUri }}
+          color="primary"
+        >
           Read Post
         </Button>
       </CardActions>
