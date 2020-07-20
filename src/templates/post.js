@@ -42,8 +42,10 @@ const PostTemplate = ({ data: { mdx: post }, ...props }) => {
         <Typography variant="subtitle1" component="p">
           Posted by {post.frontmatter.author} - {post.frontmatter.date}
         </Typography>
-        <MDXRenderer>{post.body}</MDXRenderer>
-        <Button component={Link} to={`..${previousUri}`}>
+        <Typography variant="body1" component="div">
+          <MDXRenderer>{post.body}</MDXRenderer>
+        </Typography>
+        <Button component={Link} to={`..${previousUri}`} color="primary">
           <KeyboardArrowLeft /> BACK
         </Button>
       </Paper>
