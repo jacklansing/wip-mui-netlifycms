@@ -39,7 +39,7 @@ const PostTemplate = ({ data: { mdx: post }, ...props }) => {
         <Typography variant="h4" component="h1">
           {post.frontmatter.title}
         </Typography>
-        <Typography variant="subtitle1" component="p">
+        <Typography variant="subtitle1" component="p" color="textSecondary">
           Posted by {post.frontmatter.author} - {post.frontmatter.date}
         </Typography>
         <Typography variant="body1" component="div">
