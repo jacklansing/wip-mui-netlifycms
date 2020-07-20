@@ -52,7 +52,7 @@ const NavBarDrawer = ({ drawerOpen, handleDrawerClose }) => {
                 Home
               </ListItemLink>
               <Divider />
-              <ListItemLink href="/classes">
+              <ListItemLink href="/about">
                 <ListItemIcon>
                   <InfoIcon />
                 </ListItemIcon>
