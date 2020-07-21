@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
+import SEO from "../components/seo"
 import Layout from "../components/layout"
 import PostPreview from "../components/post-preview"
 
@@ -29,6 +30,7 @@ const PostList = props => {
   const uri = props.uri
   return (
     <Layout>
+      <SEO title="News" />
       {posts.map(post => (
         <PostPreview
           key={post.node.fields.slug}
