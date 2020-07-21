@@ -42,7 +42,7 @@ const PostList = props => {
         <Button
           disabled={isFirst}
           component={Link}
-          to={`/${prevPage}`}
+          to={isFirst ? "/" : `/${prevPage}`}
           rel="prev"
         >
           <KeyboardArrowLeft /> Newer
@@ -50,7 +50,7 @@ const PostList = props => {
         <Button
           disabled={isLast}
           component={Link}
-          to={`/${nextPage}`}
+          to={isLast ? "/" : `/${nextPage}`}
           rel="next"
         >
           Older <KeyboardArrowRight />
