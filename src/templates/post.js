@@ -23,6 +23,9 @@ export const query = graphql`
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(2),
+    [theme.breakpoints.up("md")]: {
+      padding: theme.spacing(3),
+    },
   },
 }))
 
