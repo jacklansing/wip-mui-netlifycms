@@ -41,6 +41,21 @@ const useStyles = makeStyles(theme => ({
       color: "white",
       textDecoration: "none",
       fontWeight: "500",
+      "&:after": {
+        content: '""',
+        position: "absolute",
+        bottom: 3,
+        left: 0,
+        width: "100%",
+        borderBottom: "2px solid white",
+        opacity: 0,
+        transition: "all 1s ease-in-out",
+      },
+    },
+    "& a:hover": {
+      "&:after": {
+        opacity: 1,
+      },
     },
     "& li": {
       position: "relative",
@@ -54,12 +69,7 @@ const useStyles = makeStyles(theme => ({
   },
   activeLink: {
     "&:after": {
-      content: '""',
-      position: "absolute",
-      bottom: 3,
-      left: 0,
-      width: "100%",
-      borderBottom: "2px solid white",
+      opacity: "1 !important",
     },
   },
 }))
