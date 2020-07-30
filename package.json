@@ -1,7 +1,7 @@
 {
-  "name": "unc-sam",
+  "name": "gatsby-mui-netlifycms",
   "private": true,
-  "description": "A simple website for the Uncle Sam Figure Skating club",
+  "description": "Netlify CMS set up for Posts with pagination. Mui with custom Theme UI file setup. Based off gatsby-starter-default.",
   "version": "0.1.0",
   "author": "Jack Lansing <jack.lansing@live.com>",
   "dependencies": {
